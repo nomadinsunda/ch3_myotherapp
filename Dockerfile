@@ -3,8 +3,9 @@ FROM openjdk:17
 RUN useradd -r -M -s /usr/sbin/nologin example
 
 WORKDIR /example
+COPY . .
 
-COPY --chown=example:example . .
+RUN chown -R example:example /example
 
 USER example
 RUN javac Main.java
