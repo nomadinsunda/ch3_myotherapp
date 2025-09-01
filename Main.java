@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        SomeResource res = new SomeResource();
+        SomeResource res = null;
         try {
+            res = new SomeResource();   // 생성자 예외도 finally가 실행됨
             System.out.println("This is my other app. :)");
         } finally {
-            res.close();
+            if (res != null) res.close();
         }
     }
 }
